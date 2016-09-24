@@ -246,7 +246,10 @@ int *num_of_current_detect;
 	  //TODO fault detection
 	  //HINT check if faulty value and good value is different or not
 	  //---------------------------------------- hole ---------------------------------------------
-	    
+            for (i = 0; i < num_of_fault; i++) {
+	      if ((w->wire_value2 & Mask[i]) != (w->wire_value1 & Mask[i]))
+		simulated_fault_list[i]->detect = TRUE;
+            }
 	  //-------------------------------------------------------------------------------------------
 	  }
 	  w->wire_value2 = w->wire_value1;  // reset to fault-free values
@@ -505,8 +508,10 @@ int bit_position,fault;
 	//TODO fault injection
 	//HINT assign faulty_wire->wire_value2 to faulty value
 	//------------------------------------- hole -------------------------------------------------
-  
-  
+  if (fault == STUCK0)
+    faulty_wire->wire_value2 &= ~(3 << (bit_position << 1));
+  else if(fault == STUCK1) 
+    faulty_wire->wire_value2 |= (3 << (bit_position << 1));
     //--------------------------------------------------------------------------------------------
   faulty_wire->fault_flag |= Mask[bit_position];// bit position of the fault 
   return;
