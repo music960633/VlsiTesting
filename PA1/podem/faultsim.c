@@ -510,7 +510,7 @@ int bit_position,fault;
 	//------------------------------------- hole -------------------------------------------------
   if (fault == STUCK0)
     faulty_wire->wire_value2 &= ~(3 << (bit_position << 1));
-  else if(fault == STUCK1) 
+  else if (fault == STUCK1)
     faulty_wire->wire_value2 |= (3 << (bit_position << 1));
     //--------------------------------------------------------------------------------------------
   faulty_wire->fault_flag |= Mask[bit_position];// bit position of the fault 
