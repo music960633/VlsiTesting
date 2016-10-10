@@ -23,12 +23,12 @@ struct WIRE {
     int level;             /* level of the wire */
     short *pi_reach;       /* array of no. of paths reachable from each pi, for podem */
 
-    int wire_value1;       /* (32 bits) represents fault-free value for this wire. 
+    long long wire_value1; /* (64 bits) represents fault-free value for this wire. 
 			      the same [00|11|01] replicated by 16 times (for pfedfs) */
-    int wire_value2;       /* (32 bits) represents values of this wire 
+    long long wire_value2; /* (64 bits) represents values of this wire 
 			      in the presence of 16 faults. (for pfedfs) */
 
-    int fault_flag;        /* indicates the fault-injected bit position, for pfedfs */
+    long long fault_flag;  /* indicates the fault-injected bit position, for pfedfs */
     int wlist_index;       /* index into the sorted_wlist array */
 };
 

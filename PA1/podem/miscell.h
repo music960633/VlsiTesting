@@ -13,8 +13,12 @@
 #define REDUNDANT      3
 #define STUCK0         0
 #define STUCK1         1
+/*
 #define ALL_ONE        0xffffffff // for parallel fault sim; 2 ones represent a logic one
 #define ALL_ZERO       0x00000000 // for parallel fault sim; 2 zeros represent a logic zero
+*/
+#define ALL_ONE        0xffffffffffffffffll // for parallel fault sim; 2 ones represent a logic one
+#define ALL_ZERO       0x0000000000000000ll // for parallel fault sim; 2 zeros represent a logic zero
 #define MAX(A,B) ((A) > (B) ? (A) : (B))
 #define MIN(A,B) ((A) < (B) ? (A) : (B))
 #define ABS(A) ((A) < 0 ? -(A) : (A))

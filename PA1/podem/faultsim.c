@@ -12,6 +12,7 @@
 
 /* pack 16 faults into one packet.  simulate 16 faults togeter. 
  * the following variable name is somewhat misleading */
+/*
 #define num_of_pattern 16
 
 unsigned int Mask[16] = {0x00000003, 0x0000000c, 0x00000030, 0x000000c0,
@@ -23,6 +24,30 @@ unsigned int Unknown[16] = {0x00000001, 0x00000004, 0x00000010, 0x00000040,
                             0x00000100, 0x00000400, 0x00001000, 0x00004000,
                             0x00010000, 0x00040000, 0x00100000, 0x00400000,
                             0x01000000, 0x04000000, 0x10000000, 0x40000000,};
+*/
+/* modified to 32 patterns by music960633 */
+#define num_of_pattern 32
+unsigned long long Mask[32] = {
+  0x0000000000000003ull, 0x000000000000000cull, 0x0000000000000030ull, 0x00000000000000c0ull,
+  0x0000000000000300ull, 0x0000000000000c00ull, 0x0000000000003000ull, 0x000000000000c000ull,
+  0x0000000000030000ull, 0x00000000000c0000ull, 0x0000000000300000ull, 0x0000000000c00000ull,
+  0x0000000003000000ull, 0x000000000c000000ull, 0x0000000030000000ull, 0x00000000c0000000ull,
+  0x0000000300000000ull, 0x0000000c00000000ull, 0x0000003000000000ull, 0x000000c000000000ull,
+  0x0000030000000000ull, 0x00000c0000000000ull, 0x0000300000000000ull, 0x0000c00000000000ull,
+  0x0003000000000000ull, 0x000c000000000000ull, 0x0030000000000000ull, 0x00c0000000000000ull,
+  0x0300000000000000ull, 0x0c00000000000000ull, 0x3000000000000000ull, 0xc000000000000000ull
+};
+
+unsigned long long Unknown[32] = {
+  0x0000000000000001ull, 0x0000000000000004ull, 0x0000000000000010ull, 0x0000000000000040ull,
+  0x0000000000000100ull, 0x0000000000000400ull, 0x0000000000001000ull, 0x0000000000004000ull,
+  0x0000000000010000ull, 0x0000000000040000ull, 0x0000000000100000ull, 0x0000000000400000ull,
+  0x0000000001000000ull, 0x0000000004000000ull, 0x0000000010000000ull, 0x0000000040000000ull,
+  0x0000000100000000ull, 0x0000000400000000ull, 0x0000001000000000ull, 0x0000004000000000ull,
+  0x0000010000000000ull, 0x0000040000000000ull, 0x0000100000000000ull, 0x0000400000000000ull,
+  0x0001000000000000ull, 0x0004000000000000ull, 0x0010000000000000ull, 0x0040000000000000ull,
+  0x0100000000000000ull, 0x0400000000000000ull, 0x1000000000000000ull, 0x4000000000000000ull
+};
 
 /* The faulty_wire contains a list of wires that 
  * change their values in the fault simulation for a particular packet.
@@ -113,8 +138,8 @@ int *num_of_current_detect;
 	
       case 1: sort_wlist[i]->wire_value1 = ALL_ONE;  // 11 represents logic one
 	sort_wlist[i]->wire_value2 = ALL_ONE; break;
-      case 2: sort_wlist[i]->wire_value1 = 0x55555555; // 01 represents unknown
-	sort_wlist[i]->wire_value2 = 0x55555555; break;
+      case 2: sort_wlist[i]->wire_value1 = 0x5555555555555555; // 01 represents unknown
+	sort_wlist[i]->wire_value2 = 0x5555555555555555; break;
       case 0: sort_wlist[i]->wire_value1 = ALL_ZERO; // 00 represents logic zero
 	sort_wlist[i]->wire_value2 = ALL_ZERO; break;
       }
@@ -326,11 +351,11 @@ check()
 fault_sim_evaluate(w)
 wptr w;
 {
-    unsigned int new_value;
+    unsigned long long new_value;
     register nptr n;
     register int i;
     int combine();
-    unsigned int PINV(),PEXOR(),PEQUIV();
+    unsigned long long PINV(),PEXOR(),PEQUIV();
 
     /*if (w->flag & INPUT) return;*/
     n = w->inode[0];
@@ -509,9 +534,9 @@ int bit_position,fault;
 	//HINT assign faulty_wire->wire_value2 to faulty value
 	//------------------------------------- hole -------------------------------------------------
   if (fault == STUCK0)
-    faulty_wire->wire_value2 &= ~(3 << (bit_position << 1));
+    faulty_wire->wire_value2 &= ~(3ll << (bit_position << 1));
   else if (fault == STUCK1)
-    faulty_wire->wire_value2 |= (3 << (bit_position << 1));
+    faulty_wire->wire_value2 |= (3ll << (bit_position << 1));
     //--------------------------------------------------------------------------------------------
   faulty_wire->fault_flag |= Mask[bit_position];// bit position of the fault 
   return;
@@ -523,7 +548,7 @@ int bit_position,fault;
  * (because the wire_value2 was already decided by the inject_fault_value fucntion) */
 combine(w,new_value)
 wptr w;
-unsigned int *new_value;
+unsigned long long *new_value;
 {
     register int i;
   
@@ -541,28 +566,28 @@ unsigned int *new_value;
  * Swap the odd bits and the even bits,
  * then do a inversion.
  * The purpose of swaping is to keep the unknown u=01 unchanged after inversion */  
-unsigned int
+unsigned long long
 PINV(value)
-unsigned int value;
+unsigned long long value;
 {
-    return((((value & 0x55555555) << 1) ^ 0xaaaaaaaa) | 
-           (((value & 0xaaaaaaaa) >> 1) ^ 0x55555555));
+    return((((value & 0x5555555555555555ll) << 1) ^ 0xaaaaaaaaaaaaaaaall) | 
+           (((value & 0xaaaaaaaaaaaaaaaall) >> 1) ^ 0x5555555555555555ll));
 }/* end of PINV */
 
 
-unsigned int
+unsigned long long
 PEXOR(value1,value2)
-unsigned int value1,value2;
+unsigned long long value1,value2;
 {
-    unsigned int PINV();
+    unsigned long long PINV();
     return((value1 & PINV(value2)) | (PINV(value1) & value2));
 }/* end of PEXOR */
 
 
-unsigned int
+unsigned long long
 PEQUIV(value1,value2)
-unsigned int value1,value2;
+unsigned long long value1,value2;
 {
-    unsigned int PINV();
+    unsigned long long PINV();
     return((value1 | PINV(value2)) & (PINV(value1) | value2));
 }/* end of PEQUIV */
