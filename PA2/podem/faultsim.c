@@ -225,7 +225,6 @@ int *num_of_current_detect;
 	
 	/* starting with start_wire_index, evaulate all scheduled wires
 	 * start_wire_index helps to save time. */
-	 
 	for (i = start_wire_index; i < ncktwire; i++) {
 	  if (sort_wlist[i]->flag & SCHEDULED) {
 	    sort_wlist[i]->flag &= ~SCHEDULED;
@@ -239,15 +238,23 @@ int *num_of_current_detect;
 	for (w = first_faulty_wire; w; w = wtemp) {
 	  wtemp = w->pnext;
 	  w->pnext = NIL(struct WIRE);
+	  //printf("before : %d\n", w->flag);
 	  w->flag &= ~FAULTY;
 	  w->flag &= ~FAULT_INJECTED;
 	  w->fault_flag &= ALL_ZERO;
+	  //printf("after  : %d\n", w->flag);
 	  if (w->flag & OUTPUT) { // if primary output 
-	  //TODO fault detection
-	  //HINT check if faulty value and good value is different or not
-	  //---------------------------------------- hole ---------------------------------------------
-	    
-	  //-------------------------------------------------------------------------------------------
+	    for (i = 0; i < num_of_fault; i++) { // check every undetected fault
+	      if (!(simulated_fault_list[i]->detect)) {
+		if ((w->wire_value2 & Mask[i]) ^      // if value1 != value2
+		    (w->wire_value1 & Mask[i])) {
+		  if (((w->wire_value2 & Mask[i]) ^ Unknown[i])&&  // and not unknowns
+		      ((w->wire_value1 & Mask[i]) ^ Unknown[i])){
+		    simulated_fault_list[i]->detect = TRUE;  // then the fault is detected
+		  }
+		}
+	      }
+	    }
 	  }
 	  w->wire_value2 = w->wire_value1;  // reset to fault-free values
 	}  // for w = first_faulty_wire
@@ -502,12 +509,8 @@ inject_fault_value(faulty_wire,bit_position,fault)
 wptr faulty_wire;
 int bit_position,fault;
 {
-	//TODO fault injection
-	//HINT assign faulty_wire->wire_value2 to faulty value
-	//------------------------------------- hole -------------------------------------------------
-  
-  
-    //--------------------------------------------------------------------------------------------
+  if (fault) faulty_wire->wire_value2 |= Mask[bit_position];// SA1 fault
+  else faulty_wire->wire_value2 &= ~Mask[bit_position]; // SA0 fault
   faulty_wire->fault_flag |= Mask[bit_position];// bit position of the fault 
   return;
 }/* end of inject_fault_value */
