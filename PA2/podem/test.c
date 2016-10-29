@@ -21,6 +21,11 @@ test()
     total_detect_num = 0;
     undetect_fault = first_fault;
     fault_under_test = first_fault;
+    /* added by music960633 */
+    dfs_counter = 0;
+    for (i = 0; i < ncktwire; ++i)
+      sort_wlist[i]->dfs_flag = 0;
+    /* end of music960633*/
 
     /* Fsim only mode */
     if(fsim_only)

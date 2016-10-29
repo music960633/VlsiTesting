@@ -23,6 +23,7 @@ int in_vector_no;          /* number of test vectors generated */
 int fsim_only;             /* flag to indicate fault simulation only */
 int sim_vectors;           /* number of simulation vectors */
 char **vectors;            /* vector set */
+int dfs_counter;           /* counter of DFS */
 
 #else
 
@@ -39,5 +40,6 @@ extern int in_vector_no;          /* number of test vectors generated */
 extern int fsim_only;             /* flag to indicate fault simulation only */
 extern int sim_vectors;           /* number of simulation vectors */
 extern char **vectors;            /* vector set */
+extern int dfs_counter;           /* counter of DFS */
 
 #endif

@@ -493,11 +493,23 @@ find_propagate_gate(level)
 trace_unknown_path(w)
   wptr w;
 {
-  register int i;
-  register wptr wtemp;
   //TODO search X-path
   //HINT if w is PO, return TRUE, if not, check all its fanout 
   //------------------------------------- hole ---------------------------------------
+  int trace_unknown_path_rec();
+  dfs_counter += 1;
+  return trace_unknown_path_rec(w);
+
+  //----------------------------------------------------------------------------------
+}/* end of trace_unknown_path */
+
+trace_unknown_path_rec(w)
+  wptr w;
+{
+  if (w->dfs_flag == dfs_counter) return FALSE;
+  w->dfs_flag = dfs_counter;
+  register int i;
+  register wptr wtemp;
   int j;
   if (w->value == U) {
     for (i = 0; i < ncktout; ++i)
