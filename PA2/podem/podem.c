@@ -503,12 +503,10 @@ trace_unknown_path(w)
     for (i = 0; i < ncktout; ++i)
       if (cktout[i] == w)
         return TRUE;
-    for (i = 0; i < w->nout; ++i) {
-      for (j = 0; j < w->onode[i]->nout; ++j) {
+    for (i = 0; i < w->nout; ++i)
+      for (j = 0; j < w->onode[i]->nout; ++j)
         if (trace_unknown_path(w->onode[i]->owire[j]) == TRUE)
           return TRUE;
-      }
-    }
   }
 
   //----------------------------------------------------------------------------------
