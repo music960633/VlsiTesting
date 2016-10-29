@@ -1,0 +1,106 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+B	display.c	7;"	d	file:
+B	podem.c	14;"	d	file:
+Buffer	input.c	/^} Buffer;$/;"	v	typeref:struct:tbuffer
+CONFLICT	podem.c	15;"	d	file:
+D	display.c	6;"	d	file:
+D	podem.c	13;"	d	file:
+FindType	input.c	/^FindType(gatetype)$/;"	f
+LSIZE	input.c	13;"	d	file:
+LastTime	input.c	/^double StartTime, LastTime;$/;"	v
+MAIN	tpgmain.c	2;"	d	file:
+Mask	faultsim.c	/^unsigned int Mask[16] = {0x00000003, 0x0000000c, 0x00000030, 0x000000c0,$/;"	v
+NUM_OF_INPUT	input.c	14;"	d	file:
+NUM_OF_OUTPUT	input.c	15;"	d	file:
+PEQUIV	faultsim.c	/^PEQUIV(value1,value2)$/;"	f
+PEXOR	faultsim.c	/^PEXOR(value1,value2)$/;"	f
+PINV	faultsim.c	/^PINV(value)$/;"	f
+StartTime	input.c	/^double StartTime, LastTime;$/;"	v
+U	display.c	5;"	d	file:
+U	podem.c	12;"	d	file:
+Unknown	faultsim.c	/^unsigned int Unknown[16] = {0x00000001, 0x00000004, 0x00000010, 0x00000040,$/;"	v
+backtrack_limit	tpgmain.c	/^int backtrack_limit = 50;       \/* default value *\/$/;"	v
+backward_imply	podem.c	/^backward_imply(current_wire,logic_level)$/;"	f
+check	faultsim.c	/^check()$/;"	f
+check2	faultsim.c	/^check2()$/;"	f
+check_test	podem.c	/^check_test()$/;"	f
+combine	faultsim.c	/^combine(w,new_value)$/;"	f
+compute_fault_coverage	init_flist.c	/^compute_fault_coverage()$/;"	f
+create_dummy_gate	init_flist.c	/^create_dummy_gate()$/;"	f
+create_structure	input.c	/^create_structure()$/;"	f
+cstime	input.c	/^    long cstime;$/;"	m	struct:tbuffer	file:
+ctoi	sim.c	/^ctoi(c)$/;"	f
+cutime	input.c	/^    long cutime;$/;"	m	struct:tbuffer	file:
+debug	input.c	/^int debug = 0;            \/* != 0 if debugging;  this is a switch of debug mode *\/$/;"	v
+display_circuit	input.c	/^display_circuit()$/;"	f
+display_fault	display.c	/^display_fault(f)$/;"	f
+display_io	display.c	/^display_io()$/;"	f
+display_line	display.c	/^display_line(fault)$/;"	f
+display_undetect	display.c	/^display_undetect(undetect_fault)$/;"	f
+eq	input.c	/^eq(string1,string2)$/;"	f
+error	input.c	/^error(message)$/;"	f
+evaluate	sim.c	/^evaluate(n)$/;"	f
+fault_evaluate	podem.c	/^fault_evaluate(fault)$/;"	f
+fault_sim_a_vector	faultsim.c	/^fault_sim_a_vector(flist,num_of_current_detect)$/;"	f
+fault_sim_evaluate	faultsim.c	/^fault_sim_evaluate(w)$/;"	f
+fault_simulate_vectors	faultsim.c	/^fault_simulate_vectors(vectors,num_vectors,flist,total_detect_num)$/;"	f
+file_no	input.c	/^int file_no = 0;         \/* number of current file *\/$/;"	v
+filename	input.c	/^char *filename;           \/* current input file *\/$/;"	v
+find_easiest_control	podem.c	/^find_easiest_control(n)$/;"	f
+find_hardest_control	podem.c	/^find_hardest_control(n)$/;"	f
+find_pi_assignment	podem.c	/^find_pi_assignment(object_wire,object_level)$/;"	f
+find_propagate_gate	podem.c	/^find_propagate_gate(level)$/;"	f
+find_test	podem.c	/^int find_test;  \/\/ TRUE when a test pattern is found$/;"	v
+first_faulty_wire	faultsim.c	/^wptr first_faulty_wire;  \/\/ points to the start of the linked list $/;"	v
+forward_imply	podem.c	/^forward_imply(w)$/;"	f
+generate_fault_list	init_flist.c	/^generate_fault_list()$/;"	f
+get_faulty_wire	faultsim.c	/^wptr get_faulty_wire(f,fault_type)$/;"	f
+getnode	input.c	/^nptr getnode(nodename)$/;"	f
+getwire	input.c	/^getwire(wirename)$/;"	f
+hashcode	input.c	/^hashcode(name)$/;"	f
+increment_pi_reach	pi_reach.c	/^increment_pi_reach(wire,pi)$/;"	f
+inject_fault_value	faultsim.c	/^inject_fault_value(faulty_wire,bit_position,fault)$/;"	f
+input	input.c	/^input(infile)$/;"	f
+itoa	init_flist.c	/^itoa(n,s)   \/*  convert n to characters in s *\/$/;"	f
+level_circuit	level.c	/^level_circuit()$/;"	f
+lineno	input.c	/^int lineno = 0;           \/* current line number *\/$/;"	v
+main	tpgmain.c	/^main(argc,argv)$/;"	f
+mark_propagate_tree	podem.c	/^mark_propagate_tree(n)$/;"	f
+newgate	input.c	/^newgate()$/;"	f
+nfind	input.c	/^nfind(name)$/;"	f
+no_of_backtracks	podem.c	/^int no_of_backtracks;  \/\/ current number of backtracks$/;"	v
+no_test	podem.c	/^int no_test; \/\/ TRUE when it is proven that no test exists for this fault $/;"	v
+num_of_gate_fault	init_flist.c	/^int num_of_gate_fault;$/;"	v
+num_of_pattern	faultsim.c	15;"	d	file:
+parse_line	input.c	/^parse_line(line)$/;"	f
+podem	podem.c	/^podem(fault, current_backtracks)$/;"	f
+read_vectors	tpgmain.c	/^read_vectors(vetFile)$/;"	f
+rearrange_gate_inputs	level.c	/^rearrange_gate_inputs()$/;"	f
+reverse	init_flist.c	/^reverse(s)  \/*  reverse string s in place *\/$/;"	f
+set_input	input.c	/^set_input(pori)$/;"	f
+set_output	input.c	/^set_output()$/;"	f
+set_uniquely_implied_value	podem.c	/^set_uniquely_implied_value(fault)$/;"	f
+setup_pi_reach	pi_reach.c	/^setup_pi_reach()$/;"	f
+sim	sim.c	/^sim()$/;"	f
+stime	input.c	/^    long stime;$/;"	m	struct:tbuffer	file:
+targc	input.c	/^int targc;                \/* number of args on current command line *\/$/;"	v
+targv	input.c	/^char *targv[100];        \/* pointer to tokens on current command line *\/$/;"	v
+tbuffer	input.c	/^struct tbuffer {$/;"	s	file:
+temp_cktin	input.c	/^wptr *temp_cktin;        \/* temporary input wire list *\/$/;"	v
+temp_cktout	input.c	/^wptr *temp_cktout;       \/* temporary output wire list *\/$/;"	v
+test	test.c	/^test()$/;"	f
+test_possible	podem.c	/^test_possible(fault)$/;"	f
+timer	input.c	/^timer(file,mesg1,mesg2)$/;"	f
+total_attempt_num	tpgmain.c	/^int total_attempt_num = 1;      \/* default value *\/$/;"	v
+trace_unknown_path	podem.c	/^trace_unknown_path(w)$/;"	f
+unique_imply	podem.c	/^int unique_imply;$/;"	v
+unmark_propagate_tree	podem.c	/^unmark_propagate_tree(n)$/;"	f
+unpack	sim.c	/^unpack(value,bit_no)$/;"	f
+usage	tpgmain.c	/^usage()$/;"	f
+utime	input.c	/^    long utime;$/;"	m	struct:tbuffer	file:
+wfind	input.c	/^wfind(name)$/;"	f
