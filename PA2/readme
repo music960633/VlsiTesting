@@ -1,0 +1,215 @@
+
+***************************************************
+
+  Utilities for ECE255: VLSI TESTING TECHNIQUES
+
+***************************************************
+
+<<< Sub-directory list: >>>
+===========================
+
+1. podem: A combinational test generator (taking .sim circuit format)
+
+2. sample_circuits: benchmark circuits in .sim format
+
+3. ltest: A mini testing package from USC. 
+          including: * Logic simulator
+                     * Combinational test generator (D-algorithm)
+                     * Deductive fault simulator
+          input format: see examples in ./ltest/circuits.
+          detailed info: see README in ./ltest
+
+
+<<< Basic Data Structures for podem >>>
+========================================
+1. (NETLIST) The internal data structure of a netlist constructed in podem 
+can be described by a set of connected NODEs and WIREs.
+The definition of NODE and WIRE is described in header file: atpg.h
+
+2. (IO) Primary inputs (outputs) are treated as pseudo WIREs, and can be
+accessed by the global array variable: cktin (cktout), defined in global.h. 
+(The fanin (fanout) node of a PI (PO) is a NULL pointer).
+
+3. (WIRE) In general, a WIRE could have multiple fanin's and multiple fanout's.
+But usually in the netlist, a wire only has a single driving (fanin) 
+node, though it may have multiple fanout nodes. 
+
+<<< Extracted data structure of WIRE from atpg.h>>>
+===================================================
+typedef struct WIRE *wptr;
+struct WIRE {
+    char *name;            /* asciz name of wire */
+    nptr *inode;           /* nodes driving this wire */
+    nptr *onode;           /* nodes driven by this wire */
+    short nin;             /* number of input nodes */
+    short nout;            /* number of output nodes */
+    int value;             /* logic value of the wire */
+    int flag;              /* flag word */
+    wptr pnext;            /* general usage link */
+    wptr hnext;            /* hash bucket link */
+    /* data structure for podem test pattern generation */
+    int level;             /* level of the wire */
+    short *pi_reach;       /* array of no. of paths reachable from each pi */
+    /* data structure for parallel fault simulator */
+    int wire_value1;       /* fault-free value */
+    int wire_value2;       /* faulty value */
+    int fault_flag;        /* flag to indicate fault-injected bit */
+    int wlist_index;       /* index into the wlist array */
+};
+
+4. (NODE) In general, a NODE could have multiple fanin's and multiple fanout's.
+But usually a node in the netlist has only a single fanout WIRE.
+
+<<< Extracted data structure of NODE from atpg.h >>>
+====================================================
+typedef struct NODE *nptr;
+struct NODE {
+    char *name;            /* asciz name of node */
+    wptr *iwire;           /* wires driving this node */
+    wptr *owire;           /* wires driven by this node */
+    short nin;             /* number of input wires */
+    short nout;            /* number of output wires */
+    int  type;             /* node type */
+    int  flag;             /* flag word */
+    nptr pnext;            /* general usage link */
+    nptr hnext;            /* hash bucket link */
+};
+
+5. (GATE TYPE) The supported gate type is defined in atpg.h.
+
+<<< Extracted gate type from atpg.h>>>
+=======================================
+    #define NOT       1
+    #define NAND      2
+    #define AND       3
+    #define INPUT     4
+    #define NOR       5
+    #define OR        6
+    #define OUTPUT    8
+    #define XOR      11
+    #define BUF      17
+
+6. (FAULT) Data structure for a stuck-at fault is defined in miscell.h.
+
+<<< Extracted data strcuture of FAULT from miscell.h >>>
+=======================================================
+typedef struct FAULT *fptr;
+typedef char *string;
+
+struct FAULT {
+    nptr node;            /* gate under test(NIL if PI/PO fault) */
+    short io;             /* 0 = GI; 1 = GO */
+    short index;          /* index for GI fault */
+    short fault_type;     /* s-a-1 or s-a-0 fault */
+    short detect;         /* detection flag */
+    short test_tried;     /* flag to indicate test is being tried */
+    short eqv_fault_num;  /* number of equivalent faults */
+    fptr  pnext;          /* pointer to the next element in the list */
+    fptr  pnext_undetect; /* pointer to next undetected fault */
+    short to_swlist;      /* index to the sort_wlist[] */
+    int   fault_no;       /* fault index */
+};
+
+7. (GLOBAL VARIABLES) Several global variables, such as the number
+of primary inputs and outputs, are defined in header file global.h. 
+
+<<< Extracted global variables from global.h >>>
+================================================
+wptr *sort_wlist;          /* sorted wire list with regard to level */
+wptr *cktin;               /* input wire list */
+wptr *cktout;              /* output wire list */
+wptr hash_wlist[HASHSIZE]; /* hashed wire list */
+nptr hash_nlist[HASHSIZE]; /* hashed node list */
+int ncktwire;              /* total number of wires in the circuit */
+int ncktnode;              /* total number of nodes in the circuit */
+int ncktin;                /* number of primary inputs */
+int ncktout;               /* number of primary outputs */
+int in_vector_no;          /* number of test vectors generated */
+int fsim_only;             /* flag to indicate fault simulation only */
+int sim_vectors;           /* number of simulation vectors */
+char **vectors;            /* vector set */
+
+
+<<< Sample code segments >>>
+============================
+
+1. Enumerate all primary inputs
+   ***************************************************
+   list_all_PI()
+   {
+      int   i;
+      wptr  *pi_wire;
+
+      for(i=0; i<ncktin; i++){
+           pi_wire = cktin[i];
+           printf("%d-th PI wire: i, pi_wire->name);
+      }
+   }
+   ***************************************************
+
+2. Enumerate all primary outputs
+   ***************************************************
+   list_all_PO()
+   {
+      int   i;
+      wptr  *po_wire;
+
+      for(i=0; i<ncktout; i++){
+           po_wire = cktout[i];
+           printf("%d-th PO wire: i, po_wire->name);
+      }
+   }
+   **************************************************
+
+3. Accessing the fanin node of a WIRE
+   ****************************************************
+   print_out_fanin_node_of_a_wire(wire)
+      wptr   *wire;
+   {
+      nptr   *fanin_node;
+      fanin_node = wire->inode[0];
+      printf("Fanin node is : %s\n", fanin_node->name);
+   }
+   ****************************************************
+
+4. Accessing the fanout nodes of a WIRE:
+   **************************************************************
+   print_out_fanout_node_of_a_wire(wire)
+      wptr    *wire;
+   {
+      int    i;
+      nptr   *fanout_node;
+
+      for(i=0; i<wire->nout; i++){
+        fanout_node = wire->onode[i] ;
+        printf("%d-th fanout node is %s\n", i, fanout_node->name)
+      }
+   }
+   **************************************************************
+
+
+5. Accessing the fanin wires of a NODE:
+   **************************************************************
+   print_out_fanin_wire_of_a_node(node)
+      nptr    *node;
+   {
+      int    i;
+      wptr   *fanin_wire;
+
+      for(i=0; i<node->nin; i++){
+          fanin_wire = node->iwire[i] ;
+          printf("%d-th fanin wire is %s\n", i, fanin_wire->name)
+      }
+   }
+   **************************************************************
+
+6. Accessing the fanout wire of a NODE:
+   **************************************************************
+   print_out_fanout_wire_of_a_node(node)
+      nptr   *node;
+   {
+      wptr   *fanout_wire;
+      fanout_wire = node->owire[0];
+      printf("Fanin wire is : fanout_wire->name);
+   }
+   **************************************************************
