@@ -20,21 +20,4 @@ T'01100 1'
 T'10000 0'
 T'01111 1'
 
-#number of aborted faults = 0
 
-#number of redundant faults = 0
-
-#number of calling podem1 = 8
-
-#total number of backtracks = 0
-
-#FAULT COVERAGE RESULTS :
-#number of test vectors = 8
-#total number of gate faults = 34
-#total number of detected faults = 34
-#total gate fault coverage = 100.00%
-#number of equivalent gate faults = 28
-#number of equivalent detected faults = 28
-#equivalent gate fault coverage = 100.00%
-
-#atpg: cputime for test pattern generation ../sample_circuits/c17.sim: 0.0s 0.0s
