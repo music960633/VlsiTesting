@@ -150,6 +150,7 @@ repeat:
             inx=0;
             goto repeat;
         }
+        printf("pattern: %s\n", vectors[sim_vectors]);
         sim_vectors++;
     }
 	

@@ -13,6 +13,8 @@
 #define REDUNDANT      3
 #define STUCK0         0
 #define STUCK1         1
+#define STR            0
+#define STF            1
 #define ALL_ONE        0xffffffff // for parallel fault sim; 2 ones represent a logic one
 #define ALL_ZERO       0x00000000 // for parallel fault sim; 2 zeros represent a logic zero
 #define MAX(A,B) ((A) > (B) ? (A) : (B))
@@ -27,7 +29,8 @@ struct FAULT {
     short io;             /* 0 = GI; 1 = GO */
     short index;          /* index for GI fault. it represents the  
 			     associated gate input index number for this GI fault */   
-    short fault_type;     /* s-a-1 or s-a-0 fault */
+    short fault_type;     /* s-a-1 or s-a-0 or slow-to-rise or slow-to-fall fault */
+    short activate;
     short detect;         /* detection flag */
     short test_tried;     /* flag to indicate test is being tried */
     short eqv_fault_num;  /* number of equivalent faults */
