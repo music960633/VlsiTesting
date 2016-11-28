@@ -34,10 +34,11 @@ test()
         return;
     }// if fsim only
 	
-	/* tdFsim only mode */
-	if(tdfsim_only)
+    /* tdFsim only mode */
+    if(tdfsim_only)
     {
         transition_delay_fault_simulation(vectors, sim_vectors, &total_detect_num);
+        printf("# Total detected faults: %d\n", total_detect_num);
         return;
     }
 

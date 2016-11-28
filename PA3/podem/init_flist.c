@@ -149,6 +149,7 @@ generate_fault_list()
     }
 
     //fprintf(stdout,"#number of equivalent faults = %d\n", fault_num);
+    printf("num of gate fault: %d\n", num_of_gate_fault);
     return;  
 }/* end of generate_fault_list */
 

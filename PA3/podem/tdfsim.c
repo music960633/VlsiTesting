@@ -40,11 +40,16 @@ transition_delay_fault_simulation(vectors, num_vectors, total_detect_num)
 {
   int i , j, current_detect_num;
   fptr transition_sim_a_vector();
-  fptr flist;
+  fptr f, flist;
 
   /* for every vector */
   generate_tdf_fault_list();
   flist = first_fault;
+  /*
+  for (f = flist; f; f = f->pnext_undetect) {
+    printf("%s %d %d\n", f->node->name, f->io, f->eqv_fault_num);
+  }
+  */
   printf("num of TDF fault: %d\n", num_of_tdf_fault);
   for (i = num_vectors - 1; i >= 0; i--) {
     flist = transition_sim_a_vector(vectors[i], flist, &current_detect_num);
@@ -67,7 +72,7 @@ transition_sim_a_vector(vector, flist, num_of_current_detect)
  
   /* check V1 */
   for (i = 0; i < ncktin; i++) {
-    nv = ctoi(vector[ncktin-i-1]);
+    nv = ctoi(vector[i]);
     sort_wlist[i]->value = nv;
   }
   for (i = 0; i < ncktwire; i++) {
@@ -87,7 +92,10 @@ transition_sim_a_vector(vector, flist, num_of_current_detect)
   }
   /* check V2 */
   for (i = 0; i < ncktin; i++) {
-    nv = ctoi(vector[ncktin-i]);
+    if (i == 0)
+      nv = ctoi(vector[ncktin]);
+    else
+      nv = ctoi(vector[i - 1]);
     sort_wlist[i]->value = nv;
   }
   for (i = 0; i < ncktwire; i++) {
@@ -402,6 +410,7 @@ int *num_of_current_detect;
     /* drop detected faults from the FRONT of the undetected fault list */
     while(flist) {
       if (flist->detect == TRUE) {
+        /* printf("(%s %d %d %d)\n", flist->node->name, flist->io, flist->fault_type, flist->eqv_fault_num); */
 	(*num_of_current_detect) += flist->eqv_fault_num;
 	f = flist->pnext_undetect;
 	flist->pnext_undetect = NULL;
@@ -414,6 +423,7 @@ int *num_of_current_detect;
     if (flist) {
       for (f = flist; f->pnext_undetect; f = ftemp) {
 	if (f->pnext_undetect->detect == TRUE) { 
+          /* printf("(%s %d %d %d)\n", f->pnext_undetect->node->name, f->pnext_undetect->io, f->pnext_undetect->fault_type, f->pnext_undetect->eqv_fault_num); */
 	  (*num_of_current_detect) += f->pnext_undetect->eqv_fault_num;
 	  f->pnext_undetect = f->pnext_undetect->pnext_undetect;
 	  ftemp = f;
