@@ -440,7 +440,7 @@ int *fault_type;
             }
 	    /* AND gate input stuck-at one fault is propagated to 
 	       AND gate output stuck-at one fault */
-            *fault_type = STUCK1;  
+            *fault_type = f->fault_type;  
             break;
 
         case NAND:
@@ -451,7 +451,7 @@ int *fault_type;
                     }
                 }
             }
-            *fault_type = STUCK0;
+            *fault_type = f->fault_type ^ 1;
             break;
         case OR:
             for (i = 0; i < f->node->nin; i++) {
@@ -461,7 +461,7 @@ int *fault_type;
                     }
                 }
             }
-            *fault_type = STUCK0;
+            *fault_type = f->fault_type;
             break;
         case  NOR:
             for (i = 0; i < f->node->nin; i++) {
@@ -471,7 +471,7 @@ int *fault_type;
                     }
                 }
             }
-            *fault_type = STUCK1;
+            *fault_type = f->fault_type ^ 1;
             break;
         case XOR:
             for (i = 0; i < f->node->nin; i++) {
