@@ -1,0 +1,261 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ABS	miscell.h	22;"	d
+ALLOC	miscell.h	8;"	d
+ALL_ASSIGNED	atpg.h	68;"	d
+ALL_ONE	miscell.h	18;"	d
+ALL_ZERO	miscell.h	19;"	d
+AND	atpg.h	56;"	d
+ANDTABLE	logic_tbl.h	/^int ANDTABLE[MULTIVALUE][MULTIVALUE] =  { 0,  0,  0,  0,  0,$/;"	v
+B	display.c	7;"	d	file:
+B	logic_tbl.h	4;"	d
+B	podem.c	14;"	d	file:
+B	tdfatpg.c	8;"	d	file:
+BUF	atpg.h	62;"	d
+Buffer	input.c	/^} Buffer;$/;"	v	typeref:struct:tbuffer
+CHANGED	atpg.h	74;"	d
+CONFLICT	podem.c	15;"	d	file:
+CONFLICT	tdfatpg.c	9;"	d	file:
+D	display.c	6;"	d	file:
+D	logic_tbl.h	3;"	d
+D	podem.c	13;"	d	file:
+D	tdfatpg.c	7;"	d	file:
+EQV	atpg.h	63;"	d
+EQVTABLE	logic_tbl.h	/^int EQVTABLE[MULTIVALUE][MULTIVALUE] =  { 1,  0,  U,  B,  D,$/;"	v
+FALSE	miscell.h	12;"	d
+FAULT	miscell.h	/^struct FAULT {$/;"	s
+FAULTY	atpg.h	73;"	d
+FAULT_INJECTED	atpg.h	72;"	d
+FICTITIOUS	atpg.h	75;"	d
+FindType	input.c	/^FindType(gatetype)$/;"	f
+GI	miscell.h	47;"	d
+GO	miscell.h	48;"	d
+HASHSIZE	atpg.h	51;"	d
+INPUT	atpg.h	57;"	d
+INV	logic_tbl.h	/^int INV[MULTIVALUE] = { 1,  0,  U,  B,  D };$/;"	v
+LSIZE	input.c	13;"	d	file:
+LastTime	input.c	/^double StartTime, LastTime;$/;"	v
+MAIN	tpgmain.c	2;"	d	file:
+MARKED	atpg.h	71;"	d
+MAX	miscell.h	20;"	d
+MAYBE	miscell.h	10;"	d
+MIN	miscell.h	21;"	d
+MULTIVALUE	logic_tbl.h	1;"	d
+Mask	faultsim.c	/^unsigned int Mask[16] = {0x00000003, 0x0000000c, 0x00000030, 0x000000c0,$/;"	v
+Mask	tdfsim.c	/^static unsigned int Mask[16] = {$/;"	v	file:
+NAND	atpg.h	55;"	d
+NIL	miscell.h	9;"	d
+NODE	atpg.h	/^struct NODE {$/;"	s
+NOR	atpg.h	58;"	d
+NOT	atpg.h	54;"	d
+NUM_OF_INPUT	input.c	14;"	d	file:
+NUM_OF_OUTPUT	input.c	15;"	d	file:
+OR	atpg.h	59;"	d
+ORTABLE	logic_tbl.h	/^int ORTABLE[MULTIVALUE][MULTIVALUE]  =  { 0,  1,  U,  D,  B,$/;"	v
+OUTPUT	atpg.h	60;"	d
+PEQUIV	faultsim.c	/^PEQUIV(value1,value2)$/;"	f
+PEXOR	faultsim.c	/^PEXOR(value1,value2)$/;"	f
+PINV	faultsim.c	/^PINV(value)$/;"	f
+PSTATE	atpg.h	76;"	d
+REDUNDANT	miscell.h	13;"	d
+SCHEDULED	atpg.h	67;"	d
+SCVCC	atpg.h	64;"	d
+STF	miscell.h	17;"	d
+STR	miscell.h	16;"	d
+STUCK0	miscell.h	14;"	d
+STUCK1	miscell.h	15;"	d
+StartTime	input.c	/^double StartTime, LastTime;$/;"	v
+TRUE	miscell.h	11;"	d
+U	display.c	5;"	d	file:
+U	logic_tbl.h	2;"	d
+U	podem.c	12;"	d	file:
+U	tdfatpg.c	6;"	d	file:
+Unknown	faultsim.c	/^unsigned int Unknown[16] = {0x00000001, 0x00000004, 0x00000010, 0x00000040,$/;"	v
+Unknown	tdfsim.c	/^static unsigned int Unknown[16] = {$/;"	v	file:
+WIRE	atpg.h	/^struct WIRE {$/;"	s
+XOR	atpg.h	61;"	d
+XORTABLE	logic_tbl.h	/^int XORTABLE[MULTIVALUE][MULTIVALUE] =  { 0,  1,  U,  D,  B,$/;"	v
+activate	miscell.h	/^    short activate;$/;"	m	struct:FAULT
+all_vectors	tdfatpg.c	/^char **all_vectors;$/;"	v
+backtrack_limit	tpgmain.c	/^int backtrack_limit = 50;       \/* default value *\/$/;"	v
+backward_imply	podem.c	/^backward_imply(current_wire,logic_level)$/;"	f
+check	faultsim.c	/^check()$/;"	f
+check2	faultsim.c	/^check2()$/;"	f
+check_test	podem.c	/^check_test()$/;"	f
+cktin	global.h	/^wptr *cktin;               \/* input wire list *\/$/;"	v
+cktout	global.h	/^wptr *cktout;              \/* output wire list *\/$/;"	v
+combine	faultsim.c	/^combine(w,new_value)$/;"	f
+compress	global.h	/^int compress;              \/* flag to compress *\/$/;"	v
+compute_fault_coverage	init_flist.c	/^compute_fault_coverage()$/;"	f
+create_dummy_gate	init_flist.c	/^create_dummy_gate()$/;"	f
+create_structure	input.c	/^create_structure()$/;"	f
+cstime	input.c	/^    long cstime;$/;"	m	struct:tbuffer	file:
+ctoi	sim.c	/^ctoi(c)$/;"	f
+cutime	input.c	/^    long cutime;$/;"	m	struct:tbuffer	file:
+debug	input.c	/^int debug = 0;            \/* != 0 if debugging;  this is a switch of debug mode *\/$/;"	v
+detect	miscell.h	/^    short detect;         \/* detection flag *\/$/;"	m	struct:FAULT
+detect_num	global.h	/^int detect_num;            \/* detect num *\/$/;"	v
+detect_num	miscell.h	/^    int detect_num;       \/* detected number *\/$/;"	m	struct:FAULT
+display_circuit	input.c	/^display_circuit()$/;"	f
+display_fault	display.c	/^display_fault(f)$/;"	f
+display_io	display.c	/^display_io()$/;"	f
+display_line	display.c	/^display_line(fault)$/;"	f
+display_undetect	display.c	/^display_undetect(undetect_fault)$/;"	f
+eq	input.c	/^eq(string1,string2)$/;"	f
+eqv_fault_num	miscell.h	/^    int eqv_fault_num;    \/* number of equivalent faults *\/$/;"	m	struct:FAULT
+error	input.c	/^error(message)$/;"	f
+evaluate	sim.c	/^evaluate(n)$/;"	f
+evaluate2	sim.c	/^evaluate2(n)$/;"	f
+fault_evaluate	podem.c	/^fault_evaluate(fault)$/;"	f
+fault_flag	atpg.h	/^    int fault_flag;        \/* indicates the fault-injected bit position, for pfedfs *\/$/;"	m	struct:WIRE
+fault_no	miscell.h	/^    int fault_no;         \/* fault index *\/$/;"	m	struct:FAULT
+fault_sim_a_vector	faultsim.c	/^fault_sim_a_vector(flist,num_of_current_detect)$/;"	f
+fault_sim_evaluate	faultsim.c	/^fault_sim_evaluate(w)$/;"	f
+fault_simulate_vectors	faultsim.c	/^fault_simulate_vectors(vectors,num_vectors,flist,total_detect_num)$/;"	f
+fault_type	miscell.h	/^    short fault_type;     \/* s-a-1 or s-a-0 or slow-to-rise or slow-to-fall fault *\/$/;"	m	struct:FAULT
+file_no	input.c	/^int file_no = 0;         \/* number of current file *\/$/;"	v
+filename	input.c	/^char *filename;           \/* current input file *\/$/;"	v
+find_easiest_control	podem.c	/^find_easiest_control(n)$/;"	f
+find_hardest_control	podem.c	/^find_hardest_control(n)$/;"	f
+find_pi_assignment	podem.c	/^find_pi_assignment(object_wire,object_level)$/;"	f
+find_propagate_gate	podem.c	/^find_propagate_gate(level)$/;"	f
+find_test	podem.c	/^int find_test;  \/\/ TRUE when a test pattern is found$/;"	v
+find_test	tdfatpg.c	/^int find_test;                  \/\/ TRUE when a test pattern is found$/;"	v
+first_fault	miscell.h	/^fptr first_fault;         \/* pointer to the first element of the fault list *\/$/;"	v
+first_faulty_wire	faultsim.c	/^wptr first_faulty_wire;  \/\/ points to the start of the linked list $/;"	v
+first_faulty_wire	tdfsim.c	/^wptr first_faulty_wire;  \/\/ points to the start of the linked list $/;"	v
+flag	atpg.h	/^    int flag;              \/* flag word *\/$/;"	m	struct:NODE
+flag	atpg.h	/^    int flag;              \/* flag word *\/$/;"	m	struct:WIRE
+flag2	atpg.h	/^    int flag2;             \/* second flag word *\/$/;"	m	struct:WIRE
+forward_imply	podem.c	/^forward_imply(w)$/;"	f
+fptr	miscell.h	/^typedef struct FAULT *fptr;$/;"	t	typeref:struct:FAULT
+frame	atpg.h	/^    int frame;             \/* frame in decision tree *\/$/;"	m	struct:WIRE
+fsim_only	global.h	/^int fsim_only;             \/* flag to indicate fault simulation only *\/$/;"	v
+generate_fault_list	init_flist.c	/^generate_fault_list()$/;"	f
+generate_tdf_fault_list	tdfsim.c	/^generate_tdf_fault_list()$/;"	f
+get_faulty_wire	faultsim.c	/^wptr get_faulty_wire(f,fault_type)$/;"	f
+get_next_wire	tdfatpg.c	/^get_next_wire(w)$/;"	f
+get_prev_wire	tdfatpg.c	/^get_prev_wire(w)$/;"	f
+getnode	input.c	/^nptr getnode(nodename)$/;"	f
+getwire	input.c	/^getwire(wirename)$/;"	f
+hash_nlist	global.h	/^nptr hash_nlist[HASHSIZE]; \/* hashed node list *\/$/;"	v
+hash_wlist	global.h	/^wptr hash_wlist[HASHSIZE]; \/* hashed wire list *\/$/;"	v
+hashcode	input.c	/^hashcode(name)$/;"	f
+hnext	atpg.h	/^    nptr hnext;            \/* hash bucket link *\/$/;"	m	struct:NODE
+hnext	atpg.h	/^    wptr hnext;            \/* hash bucket link *\/$/;"	m	struct:WIRE
+in_vector_no	global.h	/^int in_vector_no;          \/* number of test vectors generated *\/$/;"	v
+increment_pi_reach	pi_reach.c	/^increment_pi_reach(wire,pi)$/;"	f
+index	miscell.h	/^    short index;          \/* index for GI fault. it represents the  $/;"	m	struct:FAULT
+inject_fault_value	faultsim.c	/^inject_fault_value(faulty_wire,bit_position,fault)$/;"	f
+inode	atpg.h	/^    nptr *inode;           \/* nodes driving this wire *\/$/;"	m	struct:WIRE
+input	input.c	/^input(infile)$/;"	f
+io	miscell.h	/^    short io;             \/* 0 = GI; 1 = GO *\/$/;"	m	struct:FAULT
+itoa	init_flist.c	/^itoa(n,s)   \/*  convert n to characters in s *\/$/;"	f
+iwire	atpg.h	/^    wptr *iwire;           \/* wires driving this node *\/$/;"	m	struct:NODE
+level	atpg.h	/^    int level;             \/* level of the wire *\/$/;"	m	struct:WIRE
+level_circuit	level.c	/^level_circuit()$/;"	f
+lineno	input.c	/^int lineno = 0;           \/* current line number *\/$/;"	v
+main	tpgmain.c	/^main(argc,argv)$/;"	f
+mark_propagate_tree	podem.c	/^mark_propagate_tree(n)$/;"	f
+my_strncmp	tdfatpg.c	/^my_strncmp(s1, s2, n)$/;"	f
+name	atpg.h	/^    char *name;            \/* ascii name of node *\/$/;"	m	struct:NODE
+name	atpg.h	/^    char *name;            \/* asciz name of wire *\/$/;"	m	struct:WIRE
+ncktin	global.h	/^int ncktin;                \/* number of primary inputs *\/$/;"	v
+ncktnode	global.h	/^int ncktnode;              \/* total number of nodes in the circuit *\/$/;"	v
+ncktout	global.h	/^int ncktout;               \/* number of primary outputs *\/$/;"	v
+ncktwire	global.h	/^int ncktwire;              \/* total number of wires in the circuit *\/$/;"	v
+newgate	input.c	/^newgate()$/;"	f
+nfind	input.c	/^nfind(name)$/;"	f
+nin	atpg.h	/^    short nin;             \/* number of input nodes *\/$/;"	m	struct:WIRE
+nin	atpg.h	/^    short nin;             \/* number of input wires *\/$/;"	m	struct:NODE
+no_of_all_vectors	tdfatpg.c	/^int no_of_all_vectors;$/;"	v
+no_of_backtracks	podem.c	/^int no_of_backtracks;  \/\/ current number of backtracks$/;"	v
+no_of_backtracks	tdfatpg.c	/^int no_of_backtracks;           \/\/ current number of backtracks$/;"	v
+no_test	podem.c	/^int no_test; \/\/ TRUE when it is proven that no test exists for this fault $/;"	v
+no_test	tdfatpg.c	/^int no_test;                    \/\/ TRUE when it is proven that no test exists for this fault $/;"	v
+node	miscell.h	/^    nptr node;            \/* gate under test(NIL if PI\/PO fault) *\/$/;"	m	struct:FAULT
+nout	atpg.h	/^    short nout;            \/* number of output nodes *\/$/;"	m	struct:WIRE
+nout	atpg.h	/^    short nout;            \/* number of output wires *\/$/;"	m	struct:NODE
+nptr	atpg.h	/^typedef struct NODE *nptr;$/;"	t	typeref:struct:NODE
+num_of_gate_fault	init_flist.c	/^int num_of_gate_fault;$/;"	v
+num_of_pattern	faultsim.c	15;"	d	file:
+num_of_pattern	tdfsim.c	17;"	d	file:
+num_of_tdf_fault	tdfsim.c	/^int num_of_tdf_fault;$/;"	v
+onode	atpg.h	/^    nptr *onode;           \/* nodes driven by this wire *\/$/;"	m	struct:WIRE
+owire	atpg.h	/^    wptr *owire;           \/* wires driven by this node *\/$/;"	m	struct:NODE
+parse_line	input.c	/^parse_line(line)$/;"	f
+pi_reach	atpg.h	/^    short *pi_reach;       \/* array of no. of paths reachable from each pi, for podem *\/$/;"	m	struct:WIRE
+pnext	atpg.h	/^    nptr pnext;            \/* general usage link *\/$/;"	m	struct:NODE
+pnext	atpg.h	/^    wptr pnext;            \/* general usage link *\/$/;"	m	struct:WIRE
+pnext	miscell.h	/^    fptr pnext;           \/* pointer to the next element in the list *\/$/;"	m	struct:FAULT
+pnext_undetect	miscell.h	/^    fptr pnext_undetect;  \/* pointer to next undetected fault *\/$/;"	m	struct:FAULT
+podem	podem.c	/^podem(fault, current_backtracks)$/;"	f
+read_vectors	tpgmain.c	/^read_vectors(vetFile)$/;"	f
+rearrange_gate_inputs	level.c	/^rearrange_gate_inputs()$/;"	f
+reverse	init_flist.c	/^reverse(s)  \/*  reverse string s in place *\/$/;"	f
+set_input	input.c	/^set_input(pori)$/;"	f
+set_output	input.c	/^set_output()$/;"	f
+set_uniquely_implied_value	podem.c	/^set_uniquely_implied_value(fault)$/;"	f
+setup_pi_reach	pi_reach.c	/^setup_pi_reach()$/;"	f
+sim	sim.c	/^sim()$/;"	f
+sim2	sim.c	/^sim2()$/;"	f
+sim_vectors	global.h	/^int sim_vectors;           \/* number of simulation vectors *\/$/;"	v
+sort_wlist	global.h	/^wptr *sort_wlist;          \/* sorted wire list with regard to level *\/$/;"	v
+stime	input.c	/^    long stime;$/;"	m	struct:tbuffer	file:
+string	miscell.h	/^typedef char *string;$/;"	t
+targc	input.c	/^int targc;                \/* number of args on current command line *\/$/;"	v
+targv	input.c	/^char *targv[100];        \/* pointer to tokens on current command line *\/$/;"	v
+tbuffer	input.c	/^struct tbuffer {$/;"	s	file:
+tdf_atpg	tdfatpg.c	/^tdf_atpg() {$/;"	f
+tdf_backward_imply	tdfatpg.c	/^tdf_backward_imply(current_wire,logic_level)$/;"	f
+tdf_backward_imply2	tdfatpg.c	/^tdf_backward_imply2(current_wire,logic_level)$/;"	f
+tdf_check_test	tdfatpg.c	/^tdf_check_test(fault)$/;"	f
+tdf_display_io	display.c	/^tdf_display_io()$/;"	f
+tdf_display_pattern	display.c	/^tdf_display_pattern(pattern)$/;"	f
+tdf_display_patterns	display.c	/^tdf_display_patterns(patterns, no_of_patterns)$/;"	f
+tdf_fault_evaluate	tdfatpg.c	/^tdf_fault_evaluate(fault)$/;"	f
+tdf_fill_pattern	tdfatpg.c	/^tdf_fill_pattern(vectors, no_of_vectors, no_of_detects)$/;"	f
+tdf_find_easiest_control	tdfatpg.c	/^tdf_find_easiest_control(n, object_frame)$/;"	f
+tdf_find_hardest_control	tdfatpg.c	/^tdf_find_hardest_control(n, object_frame)$/;"	f
+tdf_find_pi_assignment	tdfatpg.c	/^tdf_find_pi_assignment(object_wire, object_level, object_frame)$/;"	f
+tdf_find_propagate_gate	tdfatpg.c	/^tdf_find_propagate_gate(level)$/;"	f
+tdf_forward_imply	tdfatpg.c	/^tdf_forward_imply(w)$/;"	f
+tdf_mark_propagate_tree	tdfatpg.c	/^tdf_mark_propagate_tree(n)$/;"	f
+tdf_podem	tdfatpg.c	/^int tdf_podem(fault, current_backtracks, vectors, no_of_vectors)$/;"	f
+tdf_set_uniquely_implied_value	tdfatpg.c	/^tdf_set_uniquely_implied_value(fault)$/;"	f
+tdf_sim_a_vector	tdfsim.c	/^tdf_sim_a_vector(vector, flist, num_of_current_detect)$/;"	f
+tdf_simulate_vectors	tdfsim.c	/^tdf_simulate_vectors(vectors, num_vectors, flist, total_detect_num)$/;"	f
+tdf_test_possible	tdfatpg.c	/^tdf_test_possible(fault)$/;"	f
+tdf_trace_unknown_path2	tdfatpg.c	/^tdf_trace_unknown_path2(w)$/;"	f
+tdf_unmark_propagate_tree	tdfatpg.c	/^tdf_unmark_propagate_tree(n)$/;"	f
+tdfatpg_only	global.h	/^int tdfatpg_only;          \/* flag to indicate transition delay fault atpg only *\/$/;"	v
+tdfsim_only	global.h	/^int tdfsim_only;           \/* flag to indicate transition delay fault simulation only *\/$/;"	v
+temp_cktin	input.c	/^wptr *temp_cktin;        \/* temporary input wire list *\/$/;"	v
+temp_cktout	input.c	/^wptr *temp_cktout;       \/* temporary output wire list *\/$/;"	v
+test	test.c	/^test()$/;"	f
+test_possible	podem.c	/^test_possible(fault)$/;"	f
+test_tried	miscell.h	/^    short test_tried;     \/* flag to indicate test is being tried *\/$/;"	m	struct:FAULT
+timer	input.c	/^timer(file,mesg1,mesg2)$/;"	f
+to_swlist	miscell.h	/^    int to_swlist;        \/* index to the sort_wlist[] *\/ $/;"	m	struct:FAULT
+total_attempt_num	tpgmain.c	/^int total_attempt_num = 1;      \/* default value *\/$/;"	v
+trace_unknown_path	podem.c	/^trace_unknown_path(w)$/;"	f
+transition_sim_v2	tdfsim.c	/^transition_sim_v2(flist, num_of_current_detect)$/;"	f
+type	atpg.h	/^    int type;              \/* node type *\/$/;"	m	struct:NODE
+unique_imply	podem.c	/^int unique_imply;$/;"	v
+unique_imply	tdfatpg.c	/^int unique_imply;$/;"	v
+unmark_propagate_tree	podem.c	/^unmark_propagate_tree(n)$/;"	f
+unpack	sim.c	/^unpack(value,bit_no)$/;"	f
+usage	tpgmain.c	/^usage()$/;"	f
+utime	input.c	/^    long utime;$/;"	m	struct:tbuffer	file:
+value	atpg.h	/^    int value;             \/* logic value [0|1|2] of the wire, fault-free sim *\/$/;"	m	struct:WIRE
+value2	atpg.h	/^    int value2;            \/* second logic value of the wire *\/$/;"	m	struct:WIRE
+vectors	global.h	/^char **vectors;            \/* vector set *\/$/;"	v
+wfind	input.c	/^wfind(name)$/;"	f
+wire_value1	atpg.h	/^    int wire_value1;       \/* (32 bits) represents fault-free value for this wire. $/;"	m	struct:WIRE
+wire_value2	atpg.h	/^    int wire_value2;       \/* (32 bits) represents values of this wire $/;"	m	struct:WIRE
+wlist_index	atpg.h	/^    int wlist_index;       \/* index into the sorted_wlist array *\/$/;"	m	struct:WIRE
+wptr	atpg.h	/^typedef struct WIRE *wptr;$/;"	t	typeref:struct:WIRE

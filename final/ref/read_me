@@ -1,0 +1,21 @@
+usage of golden_tdfsim : 
+	there are two flags:
+	-ndet <number> : for N-detection
+	-tdfsim <.pat> : for test vector file
+	
+type the following command, take c17.ckt and c17.pat for example :
+	./golden_tdfsim -ndet 5 -tdfsim c17.pat c17.ckt
+	
+result :
+	#Circuit Summary:
+	#---------------
+	#number of inputs : number of inputs in the circuit
+	#number of outputs : number of outputs in the circuit
+	#number of gates : number of Comb. gates in the circuit
+	#number of wires : total wire in the circuit
+
+	# Result:
+	-----------------------
+	# Total transition delay faults : total transition delay faults in the circuit
+	# Total detected faults : total detected faults with N-detection
+	# fault coverage : Total detected faults divided by Total transition delay faults
